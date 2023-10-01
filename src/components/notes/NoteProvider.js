@@ -16,8 +16,19 @@ export function NoteProvider(props) {
       .then((response) => response.json())
       .then((response) => setNotes(response))
   }
+
+  const addNote = (note) => {
+    return fetch("http://localhost:8088/notes", {
+      method: "Post",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(note)
+    })
+      .then(getNotes)
+  }
   return (
-    <noteContext.Provider value={{ notes }}>{props.children}</noteContext.Provider>
+    <noteContext.Provider value={{ notes, addNote }}>{props.children}</noteContext.Provider>
   )
 
 
