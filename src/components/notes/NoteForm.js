@@ -4,7 +4,7 @@ import { noteContext } from './NoteProvider';
 
 export default function NoteForm() {
 
-  const { addNote, selectedNote, editNote } = useContext(noteContext)
+  const { addNote, selectedNote, editNote, setSelectedNote } = useContext(noteContext)
 
   useEffect(() => {
     //inline ternary statement
@@ -15,7 +15,11 @@ export default function NoteForm() {
     event.preventDefault();
 
     if (selectedNote) {
-      console.log(selectedNote)
+      // console.log(selectedNote)
+      selectedNote.noteText = document.querySelector(".form_input").value
+      editNote(selectedNote)
+        .then(clearForm)
+      // .then(setSelectedNote())
       return
     }
 
@@ -30,6 +34,7 @@ export default function NoteForm() {
 
   const clearForm = () => {
     document.querySelector(".form_input").value = ""
+    setSelectedNote()
   }
   return (
     <form onSubmit={submitHandler}>
