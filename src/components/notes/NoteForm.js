@@ -1,13 +1,23 @@
 import './NoteForm.css';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { noteContext } from './NoteProvider';
 
 export default function NoteForm() {
 
-  const { addNote } = useContext(noteContext)
+  const { addNote, selectedNote, editNote } = useContext(noteContext)
+
+  useEffect(() => {
+    selectedNote ? document.querySelector(".form_input").value = selectedNote.noteText : document.querySelector(".form_input").value = ""
+  }, [selectedNote])
 
   const submitHandler = (event) => {
     event.preventDefault();
+
+    if (selectedNote) {
+      console.log(selectedNote)
+      return
+    }
+
     const newNote = {
       noteText: document.querySelector(".form_input").value
 

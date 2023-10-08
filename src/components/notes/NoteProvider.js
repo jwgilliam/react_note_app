@@ -1,10 +1,13 @@
 import { useState, useEffect, createContext } from "react"
 
+
 export const noteContext = createContext()
 
 
 export function NoteProvider(props) {
   const [notes, setNotes] = useState([]);
+  const [selectedNote, setSelectedNote] = useState();
+
 
   useEffect(() => {
     getNotes()
@@ -47,7 +50,7 @@ export function NoteProvider(props) {
   }
 
   return (
-    <noteContext.Provider value={{ notes, addNote, deleteNote, editNote }}>{props.children}</noteContext.Provider>
+    <noteContext.Provider value={{ notes, addNote, deleteNote, editNote, selectedNote, setSelectedNote }}>{props.children}</noteContext.Provider>
   )
 
 
