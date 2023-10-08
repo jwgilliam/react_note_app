@@ -27,8 +27,16 @@ export function NoteProvider(props) {
     })
       .then(getNotes)
   }
+
+  const deleteNotes = (note) => {
+    return fetch(`http://localhost:8088/notes/${note.id}`, {
+      method: "Delete",
+    })
+      .then(getNotes)
+  }
+
   return (
-    <noteContext.Provider value={{ notes, addNote }}>{props.children}</noteContext.Provider>
+    <noteContext.Provider value={{ notes, addNote, deleteNotes }}>{props.children}</noteContext.Provider>
   )
 
 
