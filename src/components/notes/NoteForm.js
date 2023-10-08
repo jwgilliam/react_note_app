@@ -15,8 +15,6 @@ export default function NoteForm() {
 
     addNote(newNote).then(clearForm)
 
-
-
   }
 
   const clearForm = () => {

@@ -10,7 +10,7 @@ export default function NoteList() {
     <div className='noteList'>
 
       {notes.map((note) => {
-        return <Note note={note.noteText} key={note.id} />
+        return <Note note={note} key={note.id} />
       })}
     </div>
   )

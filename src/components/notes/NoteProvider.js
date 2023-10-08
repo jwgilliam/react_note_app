@@ -28,7 +28,7 @@ export function NoteProvider(props) {
       .then(getNotes)
   }
 
-  const deleteNotes = (note) => {
+  const deleteNote = (note) => {
     return fetch(`http://localhost:8088/notes/${note.id}`, {
       method: "Delete",
     })
@@ -36,7 +36,7 @@ export function NoteProvider(props) {
   }
 
   return (
-    <noteContext.Provider value={{ notes, addNote, deleteNotes }}>{props.children}</noteContext.Provider>
+    <noteContext.Provider value={{ notes, addNote, deleteNote }}>{props.children}</noteContext.Provider>
   )
 
 
