@@ -7,6 +7,7 @@ export default function NoteForm() {
   const { addNote, selectedNote, editNote } = useContext(noteContext)
 
   useEffect(() => {
+    //inline ternary statement
     selectedNote ? document.querySelector(".form_input").value = selectedNote.noteText : document.querySelector(".form_input").value = ""
   }, [selectedNote])
 
