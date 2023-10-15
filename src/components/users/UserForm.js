@@ -1,8 +1,11 @@
 import "./UserForm.css"
 import { useContext } from "react"
 import { UserContext } from "./UserProvider"
+import { useState } from "react"
 
 export default function UserForm() {
+
+  const [isSignup, setIsSignup] = useState(false)
 
   const { users, loginUser } = useContext(UserContext)
 
@@ -18,6 +21,10 @@ export default function UserForm() {
     // console.log(foundUser)
   }
 
+  const registrationHandler = () => {
+    setIsSignup(true)
+  }
+
   const clearForm = () => {
     document.querySelector(".user_name").value = ""
     document.querySelector(".user_password").value = ""
@@ -31,11 +38,15 @@ export default function UserForm() {
     return form
   }
   return (
-    <form className="user_login" onSubmit={loginHandler}>
-      <input type="hidden"></input>
-      <input className="user_name" type="text" placeholder="user name" required></input>
-      <input className="user_password" type="password" placeholder="password" required></input>
-      <button className="login_button">Login</button>
-    </form>
+    <>
+      <form className="user_login" onSubmit={loginHandler}>
+        <input type="hidden"></input>
+        <input className="user_name" type="text" placeholder="user name" required></input>
+        <input className="user_password" type="password" placeholder="password" required></input>
+        {isSignup ? <input type="email" className="user_email" required placeholder="e-mail"></input> : null}
+        <button className="login_button">Login</button>
+      </form>
+      <button className="register_button" onClick={registrationHandler}>Sign Up!</button>
+    </>
   )
 }

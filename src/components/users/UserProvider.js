@@ -32,6 +32,7 @@ export function UserProvider(props) {
       body: JSON.stringify(user)
     })
       .then(getUsers)
+      .then(loginUser(user))
   }
 
   return (
