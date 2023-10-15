@@ -11,7 +11,7 @@ export function NoteProvider(props) {
 
   useEffect(() => {
     getNotes()
-    console.log("getting notes")
+    // console.log("getting notes")
   }, [])
 
   const getNotes = () => {

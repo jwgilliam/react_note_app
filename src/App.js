@@ -1,13 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
-import Note from './components/notes/Note';
 import NoteList from './components/notes/NoteList';
 import NoteForm from './components/notes/NoteForm';
 import { NoteProvider } from './components/notes/NoteProvider';
+import UserFormComponent from './components/users/UserForm';
 
 function App() {
   return (
     <NoteProvider>
+      <UserFormComponent />
       <NoteList />
       <NoteForm />
 
