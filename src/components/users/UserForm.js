@@ -9,8 +9,8 @@ export default function UserForm() {
   const loginHandler = (event) => {
     event.preventDefault()
     let formData = getFormData()
-
-    console.log(users)
+    const foundUser = users.find(registeredUser => registeredUser.userName === formData.userName && registeredUser.password === formData.password)
+    console.log(foundUser)
   }
 
   const getFormData = () => {

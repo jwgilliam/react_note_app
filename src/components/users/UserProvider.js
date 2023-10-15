@@ -6,13 +6,14 @@ export const UserContext = createContext()
 export function UserProvider(props) {
 
   const [users, setUsers] = useState()
+  const [user, setUser] = useState()
 
   useEffect(() => {
     getUsers()
   }, [])
 
-  const loginUser = () => {
-
+  const loginUser = (user) => {
+    setUser(user)
   }
 
   const getUsers = () => {
