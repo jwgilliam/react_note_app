@@ -7,6 +7,8 @@ export default function UserForm() {
 
   const [isSignup, setIsSignup] = useState(false)
 
+  let signUpField = <><input type="email" className="user_email" required placeholder="e-mail"></input> <button className="register_button">Register</button></>
+
   const { users, loginUser, registerUser } = useContext(UserContext)
 
   const loginHandler = (event) => {
@@ -58,10 +60,10 @@ export default function UserForm() {
         <input type="hidden"></input>
         <input className="user_name" type="text" placeholder="user name" required></input>
         <input className="user_password" type="password" placeholder="password" required></input>
-        {isSignup ? <input type="email" className="user_email" required placeholder="e-mail"></input> : null}
-        <button className="login_button">Login</button>
+        {isSignup ? signUpField : <button className="login_button">Login</button>}
+
       </form>
-      <button className="register_button" onClick={registrationHandler}>Sign Up!</button>
+      {isSignup ? null : <button className="register_button" onClick={registrationHandler}>Sign Up!</button>}
     </>
   )
 }
