@@ -14,6 +14,7 @@ export function UserProvider(props) {
 
   const loginUser = (user) => {
     setUser(user)
+    localStorage.setItem("activeUser", user.id)
   }
 
   const getUsers = () => {

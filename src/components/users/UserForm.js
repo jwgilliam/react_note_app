@@ -10,6 +10,9 @@ export default function UserForm() {
     event.preventDefault()
     let formData = getFormData()
     const foundUser = users.find(registeredUser => registeredUser.userName === formData.userName && registeredUser.password === formData.password)
+    if (foundUser) {
+      loginUser(foundUser)
+    }
     console.log(foundUser)
   }
 
