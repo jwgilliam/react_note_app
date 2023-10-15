@@ -7,11 +7,20 @@ export default function UserForm() {
 
   const [isSignup, setIsSignup] = useState(false)
 
-  const { users, loginUser } = useContext(UserContext)
+  const { users, loginUser, registerUser } = useContext(UserContext)
 
   const loginHandler = (event) => {
     event.preventDefault()
+
     let formData = getFormData()
+
+    if (isSignup) {
+      registerUser(formData)
+      clearForm()
+      setIsSignup(false)
+      return
+    }
+
     const foundUser = users.find(registeredUser => registeredUser.userName === formData.userName && registeredUser.password === formData.password)
     if (foundUser) {
       loginUser(foundUser)
@@ -28,12 +37,18 @@ export default function UserForm() {
   const clearForm = () => {
     document.querySelector(".user_name").value = ""
     document.querySelector(".user_password").value = ""
+    document.querySelector(".user_email").value = ""
   }
 
   const getFormData = () => {
+    let email
+    if (isSignup) {
+      email = document.querySelector(".user_email").value
+    }
     const form = {
       userName: document.querySelector(".user_name").value,
-      password: document.querySelector(".user_password").value
+      password: document.querySelector(".user_password").value,
+      email: email
     }
     return form
   }
