@@ -23,7 +23,18 @@ export function UserProvider(props) {
       .then((response) => setUsers(response))
   }
 
+  const registerUser = (user) => {
+    return fetch("http://localhost:8088/users", {
+      method: "Post",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(user)
+    })
+      .then(getUsers)
+  }
+
   return (
-    <UserContext.Provider value={{ users, loginUser, getUsers }}>{props.children}</UserContext.Provider>
+    <UserContext.Provider value={{ users, loginUser, getUsers, registerUser }}>{props.children}</UserContext.Provider>
   )
 }

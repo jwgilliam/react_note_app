@@ -12,8 +12,15 @@ export default function UserForm() {
     const foundUser = users.find(registeredUser => registeredUser.userName === formData.userName && registeredUser.password === formData.password)
     if (foundUser) {
       loginUser(foundUser)
+      clearForm()
     }
-    console.log(foundUser)
+
+    // console.log(foundUser)
+  }
+
+  const clearForm = () => {
+    document.querySelector(".user_name").value = ""
+    document.querySelector(".user_password").value = ""
   }
 
   const getFormData = () => {
